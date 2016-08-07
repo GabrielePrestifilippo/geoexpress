@@ -8,8 +8,10 @@
         }).state('testpkg circles example', {
             url: '/testpkg/example/:circle',
             templateUrl: 'testpkg/views/example.html'
-        })
-        .state('mapnik', {
+        }).state('WMS Example', {
+        url: '/testpkg/wms',
+        templateUrl: 'testpkg/views/wms.html'
+      }).state('mapnik', {
           url: '/testpkg/:bbox',
           templateUrl: '/testpkg/views/view.html'
         });
