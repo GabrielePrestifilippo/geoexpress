@@ -9,6 +9,7 @@
     // http://build-failed.blogspot.it/2014/04/generating-server-side-tile-maps-with.html
     var testpkg = require('../controllers/testpkg')(Testpkg);
 
+
     // SERVICE=WMS&REQUEST=GetMap&VERSION=1.1.1&LAYERS=__all__&STYLES=&FORMAT=image%2Fpng&TRANSPARENT=true&HEIGHT=256&WIDTH=256&DETECTRETINA=true&SRS=EPSG%3A3857&BBOX=0,-7.081154551613622e-10,10018754.171394622,10018754.171394626
     // route to web geo services api
     app.route('/api/testpkg/geowebservices')
@@ -26,6 +27,7 @@
     app.get('/api/testpkg/example/anyone', function (req, res) {
       res.send('Anyone can access this');
     });
+
 
     app.get('/api/testpkg/example/auth', requiresLogin, function (req, res) {
       res.send('Only authenticated users can access this');
@@ -51,6 +53,18 @@
         res.send(html);
       });
     });
+
+    /*
+     * I'm including a new controller (server-side) to handle get and post
+     * */
+
+    var wmsMap = require('../controllers/wmsMap');
+
+    app.route('/api/testpkg/filewmsupload')
+    // .get(wmsMap.get)
+      .post(wmsMap.create);
+
+
 
     // app.get('/api/testpkg/wms/render', function(req, res) {
     //   // var map = new mapnik.Map(256, 256);

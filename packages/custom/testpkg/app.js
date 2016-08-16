@@ -23,7 +23,15 @@ Testpkg.register(function(app, auth, database, circles) {
     roles: ['authenticated'],
     menu: 'main'
   });
-  
+
+  Testpkg.menus.add({
+    title: 'Upload WMS map',
+    link: 'upload wms map',
+    roles: ['authenticated'],
+    menu: 'main'
+  });
+
+
   /**
     //Uncomment to use. Requires meanio@0.3.7 or above
     // Save settings with callback

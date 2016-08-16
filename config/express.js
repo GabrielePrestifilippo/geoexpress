@@ -14,14 +14,15 @@ var mean = require('meanio'),
   // seo = require('mean-seo'),
   config = mean.getConfig(),
   bodyParser = require('body-parser'),
-  helmet = require('helmet');
+  helmet = require('helmet'),
+  busboy = require('connect-busboy');
 
 
 module.exports = function(app, db) {
 
   app.use(bodyParser.json(config.bodyParser.json));
   app.use(bodyParser.urlencoded(config.bodyParser.urlencoded));
-
+  app.use(busboy());
   app.use(helmet());
 
   app.set('showStackError', true);
@@ -62,8 +63,8 @@ module.exports = function(app, db) {
   app.use(flash());
 
   app.use(modRewrite([
-    
-    '!^/api/.*|\\_getModules|\\.html|\\.js|\\.css|\\.swf|\\.jp(e?)g|\\.JP(E?)G|\\.PNG|\\.png|\\.ico|\\.gif|\\.svg|\\.eot|\\.ttf|\\.woff|\\.txt|\\.pdf$ / [L]'    
+
+    '!^/api/.*|\\_getModules|\\.html|\\.js|\\.css|\\.swf|\\.jp(e?)g|\\.JP(E?)G|\\.PNG|\\.png|\\.ico|\\.gif|\\.svg|\\.eot|\\.ttf|\\.woff|\\.txt|\\.pdf$ / [L]'
 
   ]));
 
