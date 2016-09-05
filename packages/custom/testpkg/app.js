@@ -16,6 +16,15 @@ Testpkg.register(function(app, auth, database, circles) {
   //We enable routing. By default the Package Object is passed to the routes
   Testpkg.routes(app, auth, database, circles);
 
+  // Injection of leaflet directive - https://github.com/angular-ui/ui-leaflet
+  Testpkg.angularDependencies(['ui-leaflet']);
+
+  // Injection of leaflet directive - https://github.com/tombatossals/angular-leaflet-directive
+  // Testpkg.angularDependencies(['leaflet-directive']);
+
+  // Injection of OL3 directive - https://github.com/tombatossals/angular-openlayers-directive
+  // Testpkg.angularDependencies(['openlayers-directive']);
+
   //We are adding a link to the main menu for all authenticated users
   Testpkg.menus.add({
     title: 'testpkg example page',
